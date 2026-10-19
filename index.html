@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光影提示词工坊 · AI 视频提示词生成器</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>光影提示词工坊</h1>
+    <p class="subtitle">AI 视频提示词生成器 · 按平台分别编译，不混用参数</p>
+  </div>
+  <div class="lang-toggle" role="group" aria-label="输出语言">
+    <button id="lang-en" type="button">EN 输出</button>
+    <button id="lang-zh" type="button" class="active">中文输出</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="controls" aria-label="控件">
+    <div class="card">
+      <h2>01 · 画面风格</h2>
+      <label>艺术风格
+        <select id="style-select"></select>
+      </label>
+      <p id="style-desc" class="hint"></p>
+    </div>
+
+    <div class="card">
+      <h2>02 · 场景预设</h2>
+      <div id="preset-grid" class="preset-grid"></div>
+    </div>
+
+    <div class="card">
+      <h2>03 · 角色锁定</h2>
+      <label>角色锚点名
+        <input id="char-name" type="text">
+      </label>
+      <label>外貌 / 服装 / 标志物
+        <textarea id="char-attrs" rows="3"></textarea>
+      </label>
+      <p class="hint">角色锁定句已压缩为一句短句，不再重复堆砌同义词。</p>
+    </div>
+
+    <div class="card">
+      <h2>04 · 场景与镜头</h2>
+      <label>场景 / 动作
+        <textarea id="scene" rows="4"></textarea>
+      </label>
+      <button id="expand-btn" type="button" class="secondary">细节扩写（规则生成，按当前风格补充感官细节）</button>
+      <div class="grid2">
+        <label>光线
+          <select id="lighting-select"></select>
+        </label>
+        <label>氛围
+          <select id="mood-select"></select>
+        </label>
+        <label>景别
+          <select id="shot-select"></select>
+        </label>
+        <label>运镜
+          <select id="movement-select"></select>
+        </label>
+        <label>目标平台
+          <select id="platform-select"></select>
+        </label>
+        <label>画幅
+          <select id="aspect-select">
+            <option value="16:9">16:9 横屏</option>
+            <option value="9:16">9:16 竖屏</option>
+            <option value="1:1">1:1 方形</option>
+          </select>
+        </label>
+      </div>
+      <label>运动强度 <span id="motion-val">5</span>/10
+        <input id="motion" type="range" min="1" max="10" value="5">
+      </label>
+      <label>自定义负面词（可选，逗号分隔）
+        <input id="custom-neg" type="text" placeholder="例如：水印, 低清">
+      </label>
+      <p id="dirty-note" class="hint warn-note" hidden>光线/氛围已被你手动调整，切换风格时不会自动覆盖。</p>
+    </div>
+
+    <div class="card">
+      <h2>05 · 3 镜分镜（规则生成）</h2>
+      <p class="hint">本地规则即时生成：远景建立 → 中景动作 → 特写情绪，共享同一角色锚点。不是 AI 生成，不转圈假装处理。</p>
+      <button id="storyboard-btn" type="button">生成 3 镜分镜</button>
+      <div id="storyboard-output"></div>
+    </div>
+
+    <div class="card">
+      <h2>06 · 提示词库</h2>
+      <p class="hint">共 <span id="vault-count">0</span> 条，数字由数据本身计算。每条可复制或载入编辑器。</p>
+      <button id="export-vault-csv" type="button" class="secondary">导出提示词库 CSV</button>
+      <div id="vault-list" class="vault-list"></div>
+    </div>
+  </section>
+
+  <aside class="output-panel" aria-label="生成结果">
+    <div class="output-inner">
+      <h2>生成结果</h2>
+      <div id="warnings" class="warnings" hidden></div>
+      <pre id="output"></pre>
+      <div class="meta-row">
+        <span id="char-count">0 字符</span><span id="word-count">0 词</span>
+      </div>
+      <label>负面提示词（与正文分开）
+        <pre id="negative-output" class="negative"></pre>
+      </label>
+      <div class="btn-row">
+        <button id="copy-btn" type="button">复制提示词</button>
+        <button id="save-btn" type="button" class="secondary">保存</button>
+        <button id="export-json" type="button" class="secondary">导出已保存 JSON</button>
+      </div>
+      <h3>已保存</h3>
+      <div id="saved-list" class="saved-list"></div>
+      <p class="fineprint">说明：纯文字提示词不能保证角色脸部完全一致，建议配合参考图 / I2V（图生视频）使用。本工具所有生成均为本地规则拼装，不调用任何 AI 接口。</p>
+    </div>
+  </aside>
+</main>
+
+<section class="pricing" aria-label="定价">
+  <h2>定价 · 付费数据包</h2>
+  <p class="pricing-sub">上面的生成器和 30 条提示词库永久免费。付费包卖的是整理好的数据文件：买断制，无订阅，文件本身就是产品。</p>
+  <div class="price-cards">
+    <div class="price-card">
+      <h3>Starter 入门包</h3>
+      <p class="price">$19 <span>一次性买断</span></p>
+      <ul>
+        <li>全量提示词库 <b id="pi-lib">120</b> 条：8 种风格 × 15 个全新概念，与免费 30 条不重复</li>
+        <li>JSON + CSV 双格式（CSV 带 BOM，Excel 直接打开不乱码）</li>
+        <li>离线版网页应用，本地打开即用</li>
+        <li>《使用指南》：各平台粘贴方法、画幅与负面词说明</li>
+        <li>商业授权：提示词及所生成视频可商用</li>
+      </ul>
+      <a class="buy-btn" id="buy-starter" href="https://gumroad.com/l/ebcjyh" target="_blank" rel="noopener">在 Gumroad 购买 Starter</a>
+    </div>
+    <div class="price-card featured">
+      <p class="badge">推荐</p>
+      <h3>Full 全量包</h3>
+      <p class="price">$39 <span>一次性买断</span></p>
+      <ul>
+        <li>Starter 入门包的全部内容</li>
+        <li>仙侠短剧包：<b id="pi-xianxia">20</b> 个三镜分镜条目，共 <b id="pi-xianxia-shots">60</b> 条镜头提示词（竖屏 9:16，Kling 格式，同一角色锚点）</li>
+        <li>电商产品视频包：<b id="pi-ecom">20</b> 条（横屏 / 竖屏变体已逐条注明）</li>
+        <li>竖屏社媒包：<b id="pi-social">20</b> 条（TikTok / 小红书 / 抖音，开场钩子前置）</li>
+        <li>角色一致性套件：角色设定表模板 + 各平台参考图工作流</li>
+      </ul>
+      <a class="buy-btn" id="buy-full" href="https://gumroad.com/l/vneevp" target="_blank" rel="noopener">在 Gumroad 购买 Full</a>
+    </div>
+  </div>
+  <p class="pricing-note">购买后由 Gumroad 邮件发货 · 支持信用卡/PayPal · 文件为 JSON/CSV，可直接导入使用</p>
+  <p class="pricing-note">付费内容两个计数口径：共 <b id="pi-entries">180</b> 个条目；按单条提示词文本计共 <b id="pi-texts">220</b> 条（仙侠包按 60 条镜头计）。两个数字的定义见包内 manifest.json，均由数据自动统计。商品已在 Gumroad 上架（卖家 Charlie xiao），购买后由 Gumroad 邮件发货。</p>
+</section>
+
+<script src="data.js"></script>
+<script src="compiler.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
