@@ -12,7 +12,7 @@
   // Paid-pack numbers shown in the pricing section. These MUST equal
   // pack/dist/manifest.json (computed from the pack data at build time);
   // tests/run-tests.js cross-checks them — never hand-tweak one side only.
-  var PACK_INFO = { libraryEntries: 120, xianxiaEntries: 20, xianxiaShots: 60, ecommerceEntries: 20, socialEntries: 20, totalEntries: 180, totalPromptTexts: 220, starterPrice: 19, fullPrice: 39 };
+  var PACK_INFO = { libraryEntries: 120, xianxiaEntries: 20, xianxiaShots: 60, ecommerceEntries: 20, socialEntries: 20, filmEntries: 20, totalEntries: 200, totalPromptTexts: 240, starterPrice: 19, fullPrice: 39 };
 
   function byId(list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return list[0]; }
   function fillSelect(el, items, labelFn) {
@@ -161,7 +161,7 @@
     var bs = $('buy-starter'), bf = $('buy-full');
     if (bs) bs.href = BUY_URLS.starter;
     if (bf) bf.href = BUY_URLS.full;
-    var map = { 'pi-lib': PACK_INFO.libraryEntries, 'pi-xianxia': PACK_INFO.xianxiaEntries, 'pi-xianxia-shots': PACK_INFO.xianxiaShots, 'pi-ecom': PACK_INFO.ecommerceEntries, 'pi-social': PACK_INFO.socialEntries, 'pi-entries': PACK_INFO.totalEntries, 'pi-texts': PACK_INFO.totalPromptTexts };
+    var map = { 'pi-lib': PACK_INFO.libraryEntries, 'pi-xianxia': PACK_INFO.xianxiaEntries, 'pi-xianxia-shots': PACK_INFO.xianxiaShots, 'pi-ecom': PACK_INFO.ecommerceEntries, 'pi-social': PACK_INFO.socialEntries, 'pi-film': PACK_INFO.filmEntries, 'pi-entries': PACK_INFO.totalEntries, 'pi-texts': PACK_INFO.totalPromptTexts };
     Object.keys(map).forEach(function (id) { var el = $(id); if (el) el.textContent = String(map[id]); });
   }
 
