@@ -2,9 +2,13 @@
   'use strict';
   var D = window.VPS_DATA, C = window.VPS_COMPILER;
   var $ = function (id) { return document.getElementById(id); };
-  var state = { language: 'zh', uiLang: 'zh', lightingDirty: false, moodDirty: false, presetId: null };
+  // ONE language for everything. The visitor picks it on the entry screen
+  // shown when the page opens (never via toggles on the page itself); the
+  // choice then drives the interface, the form labels, the preset text that
+  // fills the fields, and the compiled prompt output — so a page in English
+  // contains no Chinese, and a page in Chinese is Chinese throughout.
+  var state = { lang: 'zh', lightingDirty: false, moodDirty: false, presetId: null };
   var SAVE_KEY = 'vps-saved-v1';
-  var UI_LANG_KEY = 'vps-ui-lang';
 
   // Purchase links — the ONLY place buy URLs live. Placeholder slugs until the
   // real Gumroad listings exist; swap both values here when they do.
@@ -15,16 +19,11 @@
   // tests/run-tests.js cross-checks them — never hand-tweak one side only.
   var PACK_INFO = { libraryEntries: 120, xianxiaEntries: 20, xianxiaShots: 60, ecommerceEntries: 20, socialEntries: 20, filmEntries: 20, foodEntries: 10, petsEntries: 10, travelEntries: 10, totalEntries: 230, totalPromptTexts: 270, starterPrice: 19, fullPrice: 39 };
 
-  // Interface strings. The UI language follows the visitor's browser language
-  // on first load (Chinese → zh, anything else → en) and can be switched with
-  // the header toggle; the choice is remembered. The prompt OUTPUT language is
-  // a separate toggle and starts out matching the UI language.
   var UI_STRINGS = {
     zh: {
       docTitle: '光影提示词工坊 · AI 视频提示词生成器',
       brand: '光影提示词工坊',
       subtitle: 'AI 视频提示词生成器 · 按平台分别编译，不混用参数',
-      uiLangLabel: '界面', outLangLabel: '输出', outEn: 'EN 输出', outZh: '中文输出',
       s1: '01 · 画面风格', styleLabel: '艺术风格',
       s2: '02 · 场景预设',
       s3: '03 · 角色锁定', charName: '角色锚点名', charAttrs: '外貌 / 服装 / 标志物',
@@ -73,7 +72,6 @@
       docTitle: 'Video Prompt Studio · AI Video Prompt Generator',
       brand: 'Video Prompt Studio',
       subtitle: 'AI video prompt generator · compiled separately for each platform, no mixed parameters',
-      uiLangLabel: 'Interface', outLangLabel: 'Output', outEn: 'EN output', outZh: '中文 output',
       s1: '01 · Visual style', styleLabel: 'Art style',
       s2: '02 · Scene presets',
       s3: '03 · Character lock', charName: 'Character anchor name', charAttrs: 'Appearance / outfit / signature items',
@@ -119,7 +117,7 @@
       vaultCopy: 'Copy', vaultLoad: 'Load into editor', copyShot: 'Copy this shot', copied: 'Copied ✓'
     }
   };
-  function t(key) { return UI_STRINGS[state.uiLang][key] || UI_STRINGS.zh[key] || key; }
+  function t(key) { return UI_STRINGS[state.lang][key] || UI_STRINGS.zh[key] || key; }
 
   function byId(list, id) { for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i]; return list[0]; }
   function fillSelect(el, items, labelFn) {
@@ -133,9 +131,9 @@
     fillSelect(el, items, labelFn);
     if (v) el.value = v;
   }
-  function styleLabel(s) { return state.uiLang === 'zh' ? (s.nameZh + ' · ' + s.nameEn) : s.nameEn; }
-  function termLabel(s) { return state.uiLang === 'zh' ? s.zh : s.en; }
-  function platformLabel(s) { return state.uiLang === 'zh' ? s.nameZh : s.nameEn; }
+  function styleLabel(s) { return state.lang === 'zh' ? (s.nameZh + ' · ' + s.nameEn) : s.nameEn; }
+  function termLabel(s) { return state.lang === 'zh' ? s.zh : s.en; }
+  function platformLabel(s) { return state.lang === 'zh' ? s.nameZh : s.nameEn; }
 
   function currentInput() {
     return {
@@ -150,7 +148,7 @@
       platform: $('platform-select').value,
       aspectRatio: $('aspect-select').value,
       motion: parseInt($('motion').value, 10),
-      language: state.language,
+      language: state.lang,
       customNegatives: $('custom-neg').value
     };
   }
@@ -159,7 +157,7 @@
   function render() {
     var input = currentInput();
     var style = byId(D.STYLES, input.styleId);
-    $('style-desc').textContent = (state.uiLang === 'zh' ? style.textureZh : style.textureEn) + ' · ' + (state.uiLang === 'zh' ? style.paletteZh : style.paletteEn);
+    $('style-desc').textContent = (state.lang === 'zh' ? style.textureZh : style.textureEn) + ' · ' + (state.lang === 'zh' ? style.paletteZh : style.paletteEn);
     lastResult = C.compile(input, D);
     $('output').textContent = lastResult.prompt;
     $('negative-output').textContent = lastResult.negative;
@@ -181,23 +179,12 @@
     if (force || !state.moodDirty) $('mood-select').value = style.defaultMood;
   }
 
-  function setLanguage(lang) {
-    state.language = lang;
-    $('lang-en').classList.toggle('active', lang === 'en');
-    $('lang-zh').classList.toggle('active', lang === 'zh');
-    // Re-fill character/scene from current preset language if a preset is active is complex;
-    // fields keep user text; only compiled output language switches.
-    render();
-  }
-
   function applyUiTexts() {
-    document.documentElement.lang = state.uiLang === 'zh' ? 'zh-CN' : 'en';
+    document.documentElement.lang = state.lang === 'zh' ? 'zh-CN' : 'en';
     document.title = t('docTitle');
     document.querySelectorAll('[data-i18n]').forEach(function (el) { el.textContent = t(el.getAttribute('data-i18n')); });
     document.querySelectorAll('[data-i18n-html]').forEach(function (el) { el.innerHTML = t(el.getAttribute('data-i18n-html')); });
     document.querySelectorAll('[data-i18n-ph]').forEach(function (el) { el.setAttribute('placeholder', t(el.getAttribute('data-i18n-ph'))); });
-    $('ui-lang-zh').classList.toggle('active', state.uiLang === 'zh');
-    $('ui-lang-en').classList.toggle('active', state.uiLang === 'en');
   }
 
   function buildPresetGrid() {
@@ -205,16 +192,18 @@
     grid.innerHTML = '';
     D.PRESETS.forEach(function (p) {
       var b = document.createElement('button'); b.type = 'button'; b.setAttribute('data-id', p.id);
-      b.textContent = state.uiLang === 'zh' ? p.titleZh : p.titleEn;
+      b.textContent = state.lang === 'zh' ? p.titleZh : p.titleEn;
       b.classList.toggle('active', state.presetId === p.id);
       b.addEventListener('click', function () { applyPreset(p); });
       grid.appendChild(b);
     });
   }
 
-  function setUiLang(lang, skipSave) {
-    state.uiLang = lang;
-    if (!skipSave) { try { localStorage.setItem(UI_LANG_KEY, lang); } catch (e) {} }
+  // Apply one language to EVERYTHING, including re-filling the character /
+  // scene fields from the active preset in that language — this is what keeps
+  // the generated prompt free of the other language.
+  function applyLanguage(lang) {
+    state.lang = lang;
     applyUiTexts();
     initPricing();
     refillSelect($('style-select'), D.STYLES, styleLabel);
@@ -224,19 +213,18 @@
     refillSelect($('movement-select'), D.MOVEMENTS, termLabel);
     refillSelect($('platform-select'), D.PLATFORMS, platformLabel);
     buildPresetGrid();
+    var p = state.presetId ? byId(D.PRESETS, state.presetId) : D.PRESETS[2];
+    applyPreset(p);
     renderVault();
     renderSaved();
     var sb = $('storyboard-output'); if (sb) sb.innerHTML = '';
     render();
   }
 
-  function detectUiLang() {
-    try {
-      var saved = localStorage.getItem(UI_LANG_KEY);
-      if (saved === 'zh' || saved === 'en') return saved;
-    } catch (e) {}
-    var nav = (navigator.language || 'en').toLowerCase();
-    return nav.indexOf('zh') === 0 ? 'zh' : 'en';
+  function chooseLanguage(lang) {
+    applyLanguage(lang);
+    var gate = $('lang-gate');
+    if (gate) gate.style.display = 'none';
   }
 
   function applyPreset(p) {
@@ -244,8 +232,8 @@
     $('style-select').value = p.styleId;
     state.lightingDirty = false; state.moodDirty = false;
     $('char-name').value = p.characterName;
-    $('char-attrs').value = state.language === 'zh' ? p.characterAttrsZh : p.characterAttrsEn;
-    $('scene').value = state.language === 'zh' ? p.sceneZh : p.sceneEn;
+    $('char-attrs').value = state.lang === 'zh' ? p.characterAttrsZh : p.characterAttrsEn;
+    $('scene').value = state.lang === 'zh' ? p.sceneZh : p.sceneEn;
     $('lighting-select').value = p.lighting;
     $('mood-select').value = p.mood;
     $('shot-select').value = p.shot;
@@ -301,7 +289,7 @@
     var box = $('vault-list'); box.innerHTML = '';
     D.VAULT.forEach(function (v) {
       var div = document.createElement('div'); div.className = 'vault-item';
-      var strong = document.createElement('strong'); strong.textContent = v.title;
+      var strong = document.createElement('strong'); strong.textContent = state.lang === 'zh' ? v.title : (v.titleEn || v.title);
       var tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = v.platform;
       strong.appendChild(tag);
       var p = document.createElement('p'); p.textContent = v.prompt;
@@ -331,10 +319,9 @@
   }
 
   function init() {
-    state.uiLang = detectUiLang();
-    state.language = state.uiLang; // output language starts out matching the UI language
-    $('lang-en').classList.toggle('active', state.language === 'en');
-    $('lang-zh').classList.toggle('active', state.language === 'zh');
+    // Behind the entry gate the page pre-renders in the browser's language;
+    // the visitor's tap on the gate is what finally sets the language.
+    state.lang = (navigator.language || 'en').toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en';
 
     initPricing();
     fillSelect($('style-select'), D.STYLES, styleLabel);
@@ -354,14 +341,12 @@
       $(id).addEventListener('input', render); $(id).addEventListener('change', render);
     });
     $('motion').addEventListener('input', function () { $('motion-val').textContent = $('motion').value; render(); });
-    $('lang-en').addEventListener('click', function () { setLanguage('en'); });
-    $('lang-zh').addEventListener('click', function () { setLanguage('zh'); });
-    $('ui-lang-en').addEventListener('click', function () { setUiLang('en'); });
-    $('ui-lang-zh').addEventListener('click', function () { setUiLang('zh'); });
+    $('gate-zh').addEventListener('click', function () { chooseLanguage('zh'); });
+    $('gate-en').addEventListener('click', function () { chooseLanguage('en'); });
 
     $('expand-btn').addEventListener('click', function () {
       var input = currentInput();
-      $('scene').value = C.expandScene(input.scene, input.styleId, D, state.language);
+      $('scene').value = C.expandScene(input.scene, input.styleId, D, state.lang);
       render();
     });
 

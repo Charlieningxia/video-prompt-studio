@@ -17,78 +17,159 @@
 </style>
 </head>
 <body>
+<div id="lang-gate" class="lang-gate">
+  <div class="lang-gate-card">
+    <p class="lang-gate-brand">光影提示词工坊 · Video Prompt Studio</p>
+    <p class="lang-gate-ask">请选择语言 · Please choose your language</p>
+    <div class="lang-gate-btns">
+      <button id="gate-zh" type="button">中文</button>
+      <button id="gate-en" type="button">English</button>
+    </div>
+  </div>
+</div>
 <main class="changelog">
-  <a class="back" href="index.html">← 返回生成器</a>
-  <h1>更新日志</h1>
-  <p>付费数据包的每次更新都记录在这里。条目总数以每次构建自动生成的 manifest.json 为准，本页数字与包内清单一致。</p>
+  <a class="back" href="index.html" data-i18n="back">← 返回生成器</a>
+  <h1 data-i18n="title">更新日志</h1>
+  <p data-i18n="intro">付费数据包的每次更新都记录在这里。条目总数以每次构建自动生成的 manifest.json 为准，本页数字与包内清单一致。</p>
 
   <section class="entry">
-    <h2>旅行风光包上线 — 第四批周更</h2>
+    <h2 data-i18n="e4h">旅行风光包上线 — 第四批周更</h2>
     <p class="date">2026-11-09</p>
-    <p>新增 <b>10 条</b>旅行风光提示词条目，五个主题：</p>
+    <p data-i18n-html="e4intro">新增 <b>10 条</b>旅行风光提示词条目，五个主题：</p>
     <ul>
-      <li>山岳：雪山日出登顶、云海梯田晨光</li>
-      <li>海岸：潮汐滩涂镜面、悬崖公路自驾</li>
-      <li>沙漠：沙丘星空露营、金秋胡杨林</li>
-      <li>城市：晨雾古城石板巷、黄昏摩天轮</li>
-      <li>乡野与远北：极光雪夜小木屋、热气球谷地日出</li>
-      <li>画幅逐条标注（9:16 竖屏 4 条 / 16:9 横屏 6 条），每条以旅人作角色锚点，旅行与风光场景可直接套用</li>
+      <li data-i18n="e4l1">山岳：雪山日出登顶、云海梯田晨光</li>
+      <li data-i18n="e4l2">海岸：潮汐滩涂镜面、悬崖公路自驾</li>
+      <li data-i18n="e4l3">沙漠：沙丘星空露营、金秋胡杨林</li>
+      <li data-i18n="e4l4">城市：晨雾古城石板巷、黄昏摩天轮</li>
+      <li data-i18n="e4l5">乡野与远北：极光雪夜小木屋、热气球谷地日出</li>
+      <li data-i18n="e4l6">画幅逐条标注（9:16 竖屏 4 条 / 16:9 横屏 6 条），每条以旅人作角色锚点，旅行与风光场景可直接套用</li>
     </ul>
-    <p>收录范围：<b>Full 全量包（$39）</b>。本次更新后，付费包共 <b>230</b> 个条目；按单条提示词文本计共 <b>270</b> 条（仙侠包按 60 条镜头计）。已购买 Full 的用户：Gumroad 商品文件已替换为新版，重新下载即可获得旅行风光包。</p>
+    <p data-i18n-html="e4foot">收录范围：<b>Full 全量包（$39）</b>。本次更新后，付费包共 <b>230</b> 个条目；按单条提示词文本计共 <b>270</b> 条（仙侠包按 60 条镜头计）。已购买 Full 的用户：Gumroad 商品文件已替换为新版，重新下载即可获得旅行风光包。</p>
   </section>
 
   <section class="entry">
-    <h2>宠物日常包上线 — 第三批周更</h2>
+    <h2 data-i18n="e3h">宠物日常包上线 — 第三批周更</h2>
     <p class="date">2026-11-02</p>
-    <p>新增 <b>10 条</b>宠物日常提示词条目，五个主题：</p>
+    <p data-i18n-html="e3intro">新增 <b>10 条</b>宠物日常提示词条目，五个主题：</p>
     <ul>
-      <li>晨光：猫咪晨光伸懒腰、狗狗晨跑回眸</li>
-      <li>玩耍：小猫追毛线球、狗狗腾空接飞盘、兔子草地跳跃</li>
-      <li>洗护：狗狗泡泡浴、猫咪梳毛打呼</li>
-      <li>好奇：猫咪嗅花打喷嚏</li>
-      <li>陪伴：猫狗并排午睡、狗狗门口等主人</li>
-      <li>画幅逐条标注（9:16 竖屏 5 条 / 16:9 横屏 5 条），每条以宠物名作角色锚点，社媒萌宠场景可直接套用</li>
+      <li data-i18n="e3l1">晨光：猫咪晨光伸懒腰、狗狗晨跑回眸</li>
+      <li data-i18n="e3l2">玩耍：小猫追毛线球、狗狗腾空接飞盘、兔子草地跳跃</li>
+      <li data-i18n="e3l3">洗护：狗狗泡泡浴、猫咪梳毛打呼</li>
+      <li data-i18n="e3l4">好奇：猫咪嗅花打喷嚏</li>
+      <li data-i18n="e3l5">陪伴：猫狗并排午睡、狗狗门口等主人</li>
+      <li data-i18n="e3l6">画幅逐条标注（9:16 竖屏 5 条 / 16:9 横屏 5 条），每条以宠物名作角色锚点，社媒萌宠场景可直接套用</li>
     </ul>
-    <p>收录范围：<b>Full 全量包（$39）</b>。本次更新后，付费包共 <b>220</b> 个条目；按单条提示词文本计共 <b>260</b> 条（仙侠包按 60 条镜头计）。已购买 Full 的用户：Gumroad 商品文件已替换为新版，重新下载即可获得宠物日常包。</p>
+    <p data-i18n-html="e3foot">收录范围：<b>Full 全量包（$39）</b>。本次更新后，付费包共 <b>220</b> 个条目；按单条提示词文本计共 <b>260</b> 条（仙侠包按 60 条镜头计）。已购买 Full 的用户：Gumroad 商品文件已替换为新版，重新下载即可获得宠物日常包。</p>
   </section>
 
   <section class="entry">
-    <h2>美食与饮品特写包上线 — 第二批周更</h2>
+    <h2 data-i18n="e2h">美食与饮品特写包上线 — 第二批周更</h2>
     <p class="date">2026-11-02</p>
-    <p>新增 <b>10 条</b>美食与饮品特写提示词条目，六个主题：</p>
+    <p data-i18n-html="e2intro">新增 <b>10 条</b>美食与饮品特写提示词条目，六个主题：</p>
     <ul>
-      <li>蒸汽：拉面挑面、小笼包开笼，热气在光影里的特写</li>
-      <li>浇与注：咖啡拉花收尾、柠檬气泡饮的气泡上升</li>
-      <li>切开：草莓千层切件、熔岩巧克力蛋糕破开</li>
-      <li>滋滋作响：铁板牛排、炭火烤串的油花与火苗</li>
-      <li>拉丝与组装：披萨芝士拉丝、珍珠奶茶入杯封口</li>
-      <li>画幅逐条标注（9:16 竖屏 6 条 / 16:9 横屏 4 条），电商与社媒场景可直接套用</li>
+      <li data-i18n="e2l1">蒸汽：拉面挑面、小笼包开笼，热气在光影里的特写</li>
+      <li data-i18n="e2l2">浇与注：咖啡拉花收尾、柠檬气泡饮的气泡上升</li>
+      <li data-i18n="e2l3">切开：草莓千层切件、熔岩巧克力蛋糕破开</li>
+      <li data-i18n="e2l4">滋滋作响：铁板牛排、炭火烤串的油花与火苗</li>
+      <li data-i18n="e2l5">拉丝与组装：披萨芝士拉丝、珍珠奶茶入杯封口</li>
+      <li data-i18n="e2l6">画幅逐条标注（9:16 竖屏 6 条 / 16:9 横屏 4 条），电商与社媒场景可直接套用</li>
     </ul>
-    <p>收录范围：<b>Full 全量包（$39）</b>。本次更新后，付费包共 <b>210</b> 个条目；按单条提示词文本计共 <b>250</b> 条（仙侠包按 60 条镜头计）。已购买 Full 的用户：Gumroad 商品文件已替换为新版，重新下载即可获得美食包。</p>
+    <p data-i18n-html="e2foot">收录范围：<b>Full 全量包（$39）</b>。本次更新后，付费包共 <b>210</b> 个条目；按单条提示词文本计共 <b>250</b> 条（仙侠包按 60 条镜头计）。已购买 Full 的用户：Gumroad 商品文件已替换为新版，重新下载即可获得美食包。</p>
   </section>
 
   <section class="entry">
-    <h2>影视包上线 — 第一批周更</h2>
+    <h2 data-i18n="e1h">影视包上线 — 第一批周更</h2>
     <p class="date">2026-10-21</p>
-    <p>新增 <b>20 条</b>影视向提示词条目，四个主题各 5 条：</p>
+    <p data-i18n-html="e1intro">新增 <b>20 条</b>影视向提示词条目，四个主题各 5 条：</p>
     <ul>
-      <li>宽银幕构图：大场面、负空间、地平线叙事，全部 16:9</li>
-      <li>胶片与镜头语言：长焦压缩、手持跟拍、环绕镜头、慢推镜</li>
-      <li>类型片：黑色电影 / 西部 / 战争 / 爱情 / 劫案，各一条完整的类型片语法示范</li>
-      <li>多镜头叙事：每条含三镜叙事弧（建立 → 动作 → 反应特写），共用一个角色锚点保持人物一致</li>
+      <li data-i18n="e1l1">宽银幕构图：大场面、负空间、地平线叙事，全部 16:9</li>
+      <li data-i18n="e1l2">胶片与镜头语言：长焦压缩、手持跟拍、环绕镜头、慢推镜</li>
+      <li data-i18n="e1l3">类型片：黑色电影 / 西部 / 战争 / 爱情 / 劫案，各一条完整的类型片语法示范</li>
+      <li data-i18n="e1l4">多镜头叙事：每条含三镜叙事弧（建立 → 动作 → 反应特写），共用一个角色锚点保持人物一致</li>
     </ul>
-    <p>收录范围：<b>Full 全量包（$39）</b>。本次更新后，付费包共 <b>200</b> 个条目；按单条提示词文本计共 <b>240</b> 条（仙侠包按 60 条镜头计）。已购买 Full 的用户：Gumroad 商品文件已替换为新版，重新下载即可获得影视包。</p>
+    <p data-i18n-html="e1foot">收录范围：<b>Full 全量包（$39）</b>。本次更新后，付费包共 <b>200</b> 个条目；按单条提示词文本计共 <b>240</b> 条（仙侠包按 60 条镜头计）。已购买 Full 的用户：Gumroad 商品文件已替换为新版，重新下载即可获得影视包。</p>
   </section>
 
   <section class="entry">
-    <h2>正式上线</h2>
+    <h2 data-i18n="e0h">正式上线</h2>
     <p class="date">2026-10-18</p>
     <ul>
-      <li>免费生成器 + 30 条提示词库上线</li>
-      <li>Starter 入门包（$19）：全量提示词库 120 条</li>
-      <li>Full 全量包（$39）：共 180 个条目，按单条提示词文本计 220 条，含仙侠短剧、电商产品视频、竖屏社媒三个垂直包与角色一致性套件</li>
+      <li data-i18n="e0l1">免费生成器 + 30 条提示词库上线</li>
+      <li data-i18n="e0l2">Starter 入门包（$19）：全量提示词库 120 条</li>
+      <li data-i18n="e0l3">Full 全量包（$39）：共 180 个条目，按单条提示词文本计 220 条，含仙侠短剧、电商产品视频、竖屏社媒三个垂直包与角色一致性套件</li>
     </ul>
   </section>
 </main>
+<script>
+(function () {
+  'use strict';
+  // Same entry-language pattern as the homepage: the visitor picks one
+  // language when the page opens, and the whole page renders in it.
+  var EN = {
+    back: '← Back to the generator',
+    title: 'Changelog',
+    intro: 'Every update to the paid data packs is recorded here. Entry totals come from the manifest.json generated at each build, so the numbers on this page always match the pack contents.',
+    e4h: 'Travel & landscapes pack — weekly update #4',
+    e4intro: 'Added <b>10</b> travel & landscape prompt entries in five themes:',
+    e4l1: 'Mountains: sunrise summit over snowy peaks, terraced fields above a sea of clouds at dawn',
+    e4l2: 'Coast: mirror-like tidal flats, cliff-road road trip',
+    e4l3: 'Desert: stargazing camp on the dunes, golden poplar forest in autumn',
+    e4l4: 'City: old-town stone lanes in morning fog, Ferris wheel at dusk',
+    e4l5: 'Countryside & far north: aurora over a snowy cabin, hot-air balloons over a valley at sunrise',
+    e4l6: 'Aspect ratio noted per entry (4 vertical 9:16 / 6 landscape 16:9); each entry uses a traveler as the character anchor, ready for travel and landscape scenes',
+    e4foot: 'Included in: <b>Full Pack ($39)</b>. After this update the paid packs hold <b>230</b> entries, or <b>270</b> individual prompt texts (the xianxia pack counts as 60 shot prompts). Already bought Full? The Gumroad file has been replaced — just download it again to get the travel & landscapes pack.',
+    e3h: 'Pets daily pack — weekly update #3',
+    e3intro: 'Added <b>10</b> pets daily-life prompt entries in five themes:',
+    e3l1: 'Morning light: cat stretching in the dawn light, dog glancing back on a morning run',
+    e3l2: 'Play: kitten chasing a yarn ball, dog leaping for a frisbee, rabbit hopping on grass',
+    e3l3: 'Grooming: dog in a bubble bath, cat purring while being brushed',
+    e3l4: 'Curiosity: cat sneezing at a flower',
+    e3l5: 'Companionship: cat and dog napping side by side, dog waiting for its owner at the door',
+    e3l6: 'Aspect ratio noted per entry (5 vertical 9:16 / 5 landscape 16:9); each entry uses the pet’s name as the character anchor, ready for social pet content',
+    e3foot: 'Included in: <b>Full Pack ($39)</b>. After this update the paid packs hold <b>220</b> entries, or <b>260</b> individual prompt texts (the xianxia pack counts as 60 shot prompts). Already bought Full? The Gumroad file has been replaced — just download it again to get the pets daily pack.',
+    e2h: 'Food & beverage close-ups pack — weekly update #2',
+    e2intro: 'Added <b>10</b> food & beverage close-up prompt entries in six themes:',
+    e2l1: 'Steam: lifting ramen noodles, opening a steamer of soup dumplings — steam caught in the light',
+    e2l2: 'Pour: finishing a latte-art pour, bubbles rising in a lemon soda',
+    e2l3: 'Cut open: slicing a strawberry mille-crêpe, breaking open a molten chocolate cake',
+    e2l4: 'Sizzle: steak on a hot iron plate, skewers over charcoal with oil and flame',
+    e2l5: 'Pull & assemble: pizza cheese pull, bubble tea poured into the cup and sealed',
+    e2l6: 'Aspect ratio noted per entry (6 vertical 9:16 / 4 landscape 16:9), ready for e-commerce and social scenes',
+    e2foot: 'Included in: <b>Full Pack ($39)</b>. After this update the paid packs hold <b>210</b> entries, or <b>250</b> individual prompt texts (the xianxia pack counts as 60 shot prompts). Already bought Full? The Gumroad file has been replaced — just download it again to get the food & beverage pack.',
+    e1h: 'Film pack — weekly update #1',
+    e1intro: 'Added <b>20</b> film-oriented prompt entries, four themes of 5:',
+    e1l1: 'Widescreen composition: large-scale scenes, negative space, horizon storytelling — all 16:9',
+    e1l2: 'Film & lens language: telephoto compression, handheld tracking, orbiting shots, slow push-ins',
+    e1l3: 'Genres: film noir / western / war / romance / heist — one complete genre-grammar example each',
+    e1l4: 'Multi-shot narratives: each entry carries a 3-shot arc (establish → action → reaction close-up) sharing one character anchor for consistency',
+    e1foot: 'Included in: <b>Full Pack ($39)</b>. After this update the paid packs hold <b>200</b> entries, or <b>240</b> individual prompt texts (the xianxia pack counts as 60 shot prompts). Already bought Full? The Gumroad file has been replaced — just download it again to get the film pack.',
+    e0h: 'Launch',
+    e0l1: 'Free generator + 30-prompt vault live',
+    e0l2: 'Starter Pack ($19): full prompt library, 120 entries',
+    e0l3: 'Full Pack ($39): 180 entries, 220 prompt texts, including the xianxia short-drama, e-commerce product video and vertical social packs plus the character-consistency kit'
+  };
+  var ZH = {};
+  // Capture the page's built-in Chinese text as the zh dictionary.
+  document.querySelectorAll('[data-i18n]').forEach(function (el) { ZH[el.getAttribute('data-i18n')] = el.textContent; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function (el) { ZH[el.getAttribute('data-i18n-html')] = el.innerHTML; });
+
+  function apply(lang) {
+    var dict = lang === 'en' ? EN : ZH;
+    document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
+    document.title = lang === 'en' ? 'Changelog · Video Prompt Studio' : '更新日志 · 光影提示词工坊 Video Prompt Studio';
+    document.querySelectorAll('[data-i18n]').forEach(function (el) { var v = dict[el.getAttribute('data-i18n')]; if (v != null) el.textContent = v; });
+    document.querySelectorAll('[data-i18n-html]').forEach(function (el) { var v = dict[el.getAttribute('data-i18n-html')]; if (v != null) el.innerHTML = v; });
+  }
+  function choose(lang) {
+    apply(lang);
+    var gate = document.getElementById('lang-gate');
+    if (gate) gate.style.display = 'none';
+  }
+  // Pre-render behind the gate in the browser's language.
+  apply((navigator.language || 'en').toLowerCase().indexOf('zh') === 0 ? 'zh' : 'en');
+  document.getElementById('gate-zh').addEventListener('click', function () { choose('zh'); });
+  document.getElementById('gate-en').addEventListener('click', function () { choose('en'); });
+})();
+</script>
 </body>
 </html>

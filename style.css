@@ -6,9 +6,13 @@ body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI
 .subtitle{margin:4px 0 0;color:var(--muted);font-size:13px}
 .lang-toggle button{background:var(--panel2);color:var(--muted);border:1px solid var(--line);padding:8px 14px;border-radius:999px;cursor:pointer}
 .lang-toggle button.active{background:var(--accent);color:#14100a;border-color:var(--accent);font-weight:600}
-.toggles{display:flex;gap:16px;flex-wrap:wrap}
-.toggle-wrap{display:flex;align-items:center;gap:8px}
-.toggle-label{font-size:12px;color:var(--muted)}
+.lang-gate{position:fixed;inset:0;background:rgba(10,12,16,.92);display:flex;align-items:center;justify-content:center;z-index:50;padding:20px}
+.lang-gate-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:32px 28px;text-align:center;max-width:420px;width:100%}
+.lang-gate-brand{margin:0 0 8px;font-size:19px;font-weight:700;color:var(--text)}
+.lang-gate-ask{margin:0 0 22px;color:var(--muted);font-size:14px}
+.lang-gate-btns{display:flex;gap:12px;justify-content:center}
+.lang-gate-btns button{flex:1;background:var(--accent);color:#14100a;border:1px solid var(--accent);padding:13px 10px;border-radius:999px;cursor:pointer;font-size:16px;font-weight:600}
+.lang-gate-btns button:last-child{background:var(--panel2);color:var(--text);border-color:var(--line)}
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:20px;padding:20px 24px;align-items:start;max-width:1440px;margin:0 auto}
 .controls{display:flex;flex-direction:column;gap:16px;min-width:0}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}

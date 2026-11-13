@@ -7,26 +7,20 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="lang-gate" class="lang-gate">
+  <div class="lang-gate-card">
+    <p class="lang-gate-brand">光影提示词工坊 · Video Prompt Studio</p>
+    <p class="lang-gate-ask">请选择语言 · Please choose your language</p>
+    <div class="lang-gate-btns">
+      <button id="gate-zh" type="button">中文</button>
+      <button id="gate-en" type="button">English</button>
+    </div>
+  </div>
+</div>
 <header class="topbar">
   <div>
     <h1 data-i18n="brand">光影提示词工坊</h1>
     <p class="subtitle" data-i18n="subtitle">AI 视频提示词生成器 · 按平台分别编译，不混用参数</p>
-  </div>
-  <div class="toggles">
-    <div class="toggle-wrap">
-      <span class="toggle-label" data-i18n="uiLangLabel">界面</span>
-      <div class="lang-toggle" role="group" aria-label="界面语言 / Interface language">
-        <button id="ui-lang-zh" type="button" class="active">中文</button>
-        <button id="ui-lang-en" type="button">EN</button>
-      </div>
-    </div>
-    <div class="toggle-wrap">
-      <span class="toggle-label" data-i18n="outLangLabel">输出</span>
-      <div class="lang-toggle" role="group" aria-label="输出语言">
-        <button id="lang-en" type="button" data-i18n="outEn">EN 输出</button>
-        <button id="lang-zh" type="button" class="active" data-i18n="outZh">中文输出</button>
-      </div>
-    </div>
   </div>
 </header>
 
