@@ -9,155 +9,167 @@
 <body>
 <header class="topbar">
   <div>
-    <h1>光影提示词工坊</h1>
-    <p class="subtitle">AI 视频提示词生成器 · 按平台分别编译，不混用参数</p>
+    <h1 data-i18n="brand">光影提示词工坊</h1>
+    <p class="subtitle" data-i18n="subtitle">AI 视频提示词生成器 · 按平台分别编译，不混用参数</p>
   </div>
-  <div class="lang-toggle" role="group" aria-label="输出语言">
-    <button id="lang-en" type="button">EN 输出</button>
-    <button id="lang-zh" type="button" class="active">中文输出</button>
+  <div class="toggles">
+    <div class="toggle-wrap">
+      <span class="toggle-label" data-i18n="uiLangLabel">界面</span>
+      <div class="lang-toggle" role="group" aria-label="界面语言 / Interface language">
+        <button id="ui-lang-zh" type="button" class="active">中文</button>
+        <button id="ui-lang-en" type="button">EN</button>
+      </div>
+    </div>
+    <div class="toggle-wrap">
+      <span class="toggle-label" data-i18n="outLangLabel">输出</span>
+      <div class="lang-toggle" role="group" aria-label="输出语言">
+        <button id="lang-en" type="button" data-i18n="outEn">EN 输出</button>
+        <button id="lang-zh" type="button" class="active" data-i18n="outZh">中文输出</button>
+      </div>
+    </div>
   </div>
 </header>
 
 <main class="layout">
   <section class="controls" aria-label="控件">
     <div class="card">
-      <h2>01 · 画面风格</h2>
-      <label>艺术风格
+      <h2 data-i18n="s1">01 · 画面风格</h2>
+      <label><span data-i18n="styleLabel">艺术风格</span>
         <select id="style-select"></select>
       </label>
       <p id="style-desc" class="hint"></p>
     </div>
 
     <div class="card">
-      <h2>02 · 场景预设</h2>
+      <h2 data-i18n="s2">02 · 场景预设</h2>
       <div id="preset-grid" class="preset-grid"></div>
     </div>
 
     <div class="card">
-      <h2>03 · 角色锁定</h2>
-      <label>角色锚点名
+      <h2 data-i18n="s3">03 · 角色锁定</h2>
+      <label><span data-i18n="charName">角色锚点名</span>
         <input id="char-name" type="text">
       </label>
-      <label>外貌 / 服装 / 标志物
+      <label><span data-i18n="charAttrs">外貌 / 服装 / 标志物</span>
         <textarea id="char-attrs" rows="3"></textarea>
       </label>
-      <p class="hint">角色锁定句已压缩为一句短句，不再重复堆砌同义词。</p>
+      <p class="hint" data-i18n="charLockHint">角色锁定句已压缩为一句短句，不再重复堆砌同义词。</p>
     </div>
 
     <div class="card">
-      <h2>04 · 场景与镜头</h2>
-      <label>场景 / 动作
+      <h2 data-i18n="s4">04 · 场景与镜头</h2>
+      <label><span data-i18n="sceneLabel">场景 / 动作</span>
         <textarea id="scene" rows="4"></textarea>
       </label>
-      <button id="expand-btn" type="button" class="secondary">细节扩写（规则生成，按当前风格补充感官细节）</button>
+      <button id="expand-btn" type="button" class="secondary" data-i18n="expandBtn">细节扩写（规则生成，按当前风格补充感官细节）</button>
       <div class="grid2">
-        <label>光线
+        <label><span data-i18n="lighting">光线</span>
           <select id="lighting-select"></select>
         </label>
-        <label>氛围
+        <label><span data-i18n="mood">氛围</span>
           <select id="mood-select"></select>
         </label>
-        <label>景别
+        <label><span data-i18n="shot">景别</span>
           <select id="shot-select"></select>
         </label>
-        <label>运镜
+        <label><span data-i18n="movement">运镜</span>
           <select id="movement-select"></select>
         </label>
-        <label>目标平台
+        <label><span data-i18n="platform">目标平台</span>
           <select id="platform-select"></select>
         </label>
-        <label>画幅
+        <label><span data-i18n="aspect">画幅</span>
           <select id="aspect-select">
-            <option value="16:9">16:9 横屏</option>
-            <option value="9:16">9:16 竖屏</option>
-            <option value="1:1">1:1 方形</option>
+            <option value="16:9" data-i18n="aspect169">16:9 横屏</option>
+            <option value="9:16" data-i18n="aspect916">9:16 竖屏</option>
+            <option value="1:1" data-i18n="aspect11">1:1 方形</option>
           </select>
         </label>
       </div>
-      <label>运动强度 <span id="motion-val">5</span>/10
+      <label><span data-i18n="motion">运动强度</span> <span id="motion-val">5</span>/10
         <input id="motion" type="range" min="1" max="10" value="5">
       </label>
-      <label>自定义负面词（可选，逗号分隔）
-        <input id="custom-neg" type="text" placeholder="例如：水印, 低清">
+      <label><span data-i18n="customNeg">自定义负面词（可选，逗号分隔）</span>
+        <input id="custom-neg" type="text" data-i18n-ph="customNegPh" placeholder="例如：水印, 低清">
       </label>
-      <p id="dirty-note" class="hint warn-note" hidden>光线/氛围已被你手动调整，切换风格时不会自动覆盖。</p>
+      <p id="dirty-note" class="hint warn-note" hidden data-i18n="dirtyNote">光线/氛围已被你手动调整，切换风格时不会自动覆盖。</p>
     </div>
 
     <div class="card">
-      <h2>05 · 3 镜分镜（规则生成）</h2>
-      <p class="hint">本地规则即时生成：远景建立 → 中景动作 → 特写情绪，共享同一角色锚点。不是 AI 生成，不转圈假装处理。</p>
-      <button id="storyboard-btn" type="button">生成 3 镜分镜</button>
+      <h2 data-i18n="s5">05 · 3 镜分镜（规则生成）</h2>
+      <p class="hint" data-i18n="storyboardHint">本地规则即时生成：远景建立 → 中景动作 → 特写情绪，共享同一角色锚点。不是 AI 生成，不转圈假装处理。</p>
+      <button id="storyboard-btn" type="button" data-i18n="storyboardBtn">生成 3 镜分镜</button>
       <div id="storyboard-output"></div>
     </div>
 
     <div class="card">
-      <h2>06 · 提示词库</h2>
-      <p class="hint">共 <span id="vault-count">0</span> 条，数字由数据本身计算。每条可复制或载入编辑器。</p>
-      <button id="export-vault-csv" type="button" class="secondary">导出提示词库 CSV</button>
+      <h2 data-i18n="s6">06 · 提示词库</h2>
+      <p class="hint" data-i18n-html="vaultHint">共 <span id="vault-count">0</span> 条，数字由数据本身计算。每条可复制或载入编辑器。</p>
+      <button id="export-vault-csv" type="button" class="secondary" data-i18n="exportCsvBtn">导出提示词库 CSV</button>
       <div id="vault-list" class="vault-list"></div>
     </div>
   </section>
 
   <aside class="output-panel" aria-label="生成结果">
     <div class="output-inner">
-      <h2>生成结果</h2>
+      <h2 data-i18n="outputTitle">生成结果</h2>
       <div id="warnings" class="warnings" hidden></div>
       <pre id="output"></pre>
       <div class="meta-row">
         <span id="char-count">0 字符</span><span id="word-count">0 词</span>
       </div>
-      <label>负面提示词（与正文分开）
+      <label><span data-i18n="negLabel">负面提示词（与正文分开）</span>
         <pre id="negative-output" class="negative"></pre>
       </label>
       <div class="btn-row">
-        <button id="copy-btn" type="button">复制提示词</button>
-        <button id="save-btn" type="button" class="secondary">保存</button>
-        <button id="export-json" type="button" class="secondary">导出已保存 JSON</button>
+        <button id="copy-btn" type="button" data-i18n="copyBtn">复制提示词</button>
+        <button id="save-btn" type="button" class="secondary" data-i18n="saveBtn">保存</button>
+        <button id="export-json" type="button" class="secondary" data-i18n="exportJsonBtn">导出已保存 JSON</button>
       </div>
-      <h3>已保存</h3>
+      <h3 data-i18n="savedTitle">已保存</h3>
       <div id="saved-list" class="saved-list"></div>
-      <p class="fineprint">说明：纯文字提示词不能保证角色脸部完全一致，建议配合参考图 / I2V（图生视频）使用。本工具所有生成均为本地规则拼装，不调用任何 AI 接口。</p>
+      <p class="fineprint" data-i18n="fineprint">说明：纯文字提示词不能保证角色脸部完全一致，建议配合参考图 / I2V（图生视频）使用。本工具所有生成均为本地规则拼装，不调用任何 AI 接口。</p>
     </div>
   </aside>
 </main>
 
 <section class="pricing" aria-label="定价">
-  <h2>定价 · 付费数据包</h2>
-  <p class="pricing-sub">上面的生成器和 30 条提示词库永久免费。付费包卖的是整理好的数据文件：买断制，无订阅，文件本身就是产品。</p>
+  <h2 data-i18n="pricingTitle">定价 · 付费数据包</h2>
+  <p class="pricing-sub" data-i18n="pricingSub">上面的生成器和 30 条提示词库永久免费。付费包卖的是整理好的数据文件：买断制，无订阅，文件本身就是产品。</p>
   <div class="price-cards">
     <div class="price-card">
-      <h3>Starter 入门包</h3>
-      <p class="price">$19 <span>一次性买断</span></p>
+      <h3 data-i18n="starterName">Starter 入门包</h3>
+      <p class="price">$19 <span data-i18n="once">一次性买断</span></p>
       <ul>
-        <li>全量提示词库 <b id="pi-lib">120</b> 条：8 种风格 × 15 个全新概念，与免费 30 条不重复</li>
-        <li>JSON + CSV 双格式（CSV 带 BOM，Excel 直接打开不乱码）</li>
-        <li>离线版网页应用，本地打开即用</li>
-        <li>《使用指南》：各平台粘贴方法、画幅与负面词说明</li>
-        <li>商业授权：提示词及所生成视频可商用</li>
+        <li data-i18n-html="starterLi1">全量提示词库 <b id="pi-lib">120</b> 条：8 种风格 × 15 个全新概念，与免费 30 条不重复</li>
+        <li data-i18n="starterLi2">JSON + CSV 双格式（CSV 带 BOM，Excel 直接打开不乱码）</li>
+        <li data-i18n="starterLi3">离线版网页应用，本地打开即用</li>
+        <li data-i18n="starterLi4">《使用指南》：各平台粘贴方法、画幅与负面词说明</li>
+        <li data-i18n="starterLi5">商业授权：提示词及所生成视频可商用</li>
       </ul>
-      <a class="buy-btn" id="buy-starter" href="https://gumroad.com/l/ebcjyh" target="_blank" rel="noopener">在 Gumroad 购买 Starter</a>
+      <a class="buy-btn" id="buy-starter" href="https://gumroad.com/l/ebcjyh" target="_blank" rel="noopener" data-i18n="buyStarter">在 Gumroad 购买 Starter</a>
     </div>
     <div class="price-card featured">
-      <p class="badge">推荐</p>
-      <h3>Full 全量包</h3>
-      <p class="price">$39 <span>一次性买断</span></p>
+      <p class="badge" data-i18n="badge">推荐</p>
+      <h3 data-i18n="fullName">Full 全量包</h3>
+      <p class="price">$39 <span data-i18n="once">一次性买断</span></p>
       <ul>
-        <li>Starter 入门包的全部内容</li>
-        <li>仙侠短剧包：<b id="pi-xianxia">20</b> 个三镜分镜条目，共 <b id="pi-xianxia-shots">60</b> 条镜头提示词（竖屏 9:16，Kling 格式，同一角色锚点）</li>
-        <li>电商产品视频包：<b id="pi-ecom">20</b> 条（横屏 / 竖屏变体已逐条注明）</li>
-        <li>竖屏社媒包：<b id="pi-social">20</b> 条（TikTok / 小红书 / 抖音，开场钩子前置）</li>
-        <li>影视包：<b id="pi-film">20</b> 条（宽银幕 16:9：构图 / 镜头语言 / 类型片 / 三镜叙事，2026-10-21 周更加入）</li>
-        <li>美食与饮品特写包：<b id="pi-food">10</b> 条（蒸汽 / 浇注 / 切开 / 滋滋作响 / 拉丝 / 组装特写，9:16 与 16:9 逐条标注，2026-11-02 周更加入）</li>
-        <li>宠物日常包：<b id="pi-pets">10</b> 条（晨光 / 玩耍 / 洗护 / 好奇 / 陪伴日常，9:16 与 16:9 逐条标注，2026-11-02 周更加入）</li>
-        <li>旅行风光包：<b id="pi-travel">10</b> 条（山岳 / 海岸 / 沙漠 / 城市 / 乡野与远北，9:16 与 16:9 逐条标注，2026-11-09 周更加入）</li>
-        <li>角色一致性套件：角色设定表模板 + 各平台参考图工作流</li>
+        <li data-i18n="fullLiAll">Starter 入门包的全部内容</li>
+        <li data-i18n-html="fullLiXianxia">仙侠短剧包：<b id="pi-xianxia">20</b> 个三镜分镜条目，共 <b id="pi-xianxia-shots">60</b> 条镜头提示词（竖屏 9:16，Kling 格式，同一角色锚点）</li>
+        <li data-i18n-html="fullLiEcom">电商产品视频包：<b id="pi-ecom">20</b> 条（横屏 / 竖屏变体已逐条注明）</li>
+        <li data-i18n-html="fullLiSocial">竖屏社媒包：<b id="pi-social">20</b> 条（TikTok / 小红书 / 抖音，开场钩子前置）</li>
+        <li data-i18n-html="fullLiFilm">影视包：<b id="pi-film">20</b> 条（宽银幕 16:9：构图 / 镜头语言 / 类型片 / 三镜叙事，2026-10-21 周更加入）</li>
+        <li data-i18n-html="fullLiFood">美食与饮品特写包：<b id="pi-food">10</b> 条（蒸汽 / 浇注 / 切开 / 滋滋作响 / 拉丝 / 组装特写，9:16 与 16:9 逐条标注，2026-11-02 周更加入）</li>
+        <li data-i18n-html="fullLiPets">宠物日常包：<b id="pi-pets">10</b> 条（晨光 / 玩耍 / 洗护 / 好奇 / 陪伴日常，9:16 与 16:9 逐条标注，2026-11-02 周更加入）</li>
+        <li data-i18n-html="fullLiTravel">旅行风光包：<b id="pi-travel">10</b> 条（山岳 / 海岸 / 沙漠 / 城市 / 乡野与远北，9:16 与 16:9 逐条标注，2026-11-09 周更加入）</li>
+        <li data-i18n="fullLiKit">角色一致性套件：角色设定表模板 + 各平台参考图工作流</li>
       </ul>
-      <a class="buy-btn" id="buy-full" href="https://gumroad.com/l/vneevp" target="_blank" rel="noopener">在 Gumroad 购买 Full</a>
+      <a class="buy-btn" id="buy-full" href="https://gumroad.com/l/vneevp" target="_blank" rel="noopener" data-i18n="buyFull">在 Gumroad 购买 Full</a>
     </div>
   </div>
-  <p class="pricing-note">购买后由 Gumroad 邮件发货 · 支持信用卡/PayPal · 文件为 JSON/CSV，可直接导入使用</p>
-  <p class="pricing-note">付费内容两个计数口径：共 <b id="pi-entries">230</b> 个条目；按单条提示词文本计共 <b id="pi-texts">270</b> 条（仙侠包按 60 条镜头计）。两个数字的定义见包内 manifest.json，均由数据自动统计。商品已在 Gumroad 上架（卖家 Charlie xiao），购买后由 Gumroad 邮件发货。</p>
-  <p class="pricing-note"><a href="changelog.html">更新日志</a> · 最近更新：2026-11-09 旅行风光包（10 条）加入 Full 全量包</p>
+  <p class="pricing-note" data-i18n="pricingNote1">购买后由 Gumroad 邮件发货 · 支持信用卡/PayPal · 文件为 JSON/CSV，可直接导入使用</p>
+  <p class="pricing-note" data-i18n-html="pricingNote2">付费内容两个计数口径：共 <b id="pi-entries">230</b> 个条目；按单条提示词文本计共 <b id="pi-texts">270</b> 条（仙侠包按 60 条镜头计）。两个数字的定义见包内 manifest.json，均由数据自动统计。商品已在 Gumroad 上架（卖家 Charlie xiao），购买后由 Gumroad 邮件发货。</p>
+  <p class="pricing-note" data-i18n-html="pricingNote3"><a href="changelog.html">更新日志</a> · 最近更新：2026-11-09 旅行风光包（10 条）加入 Full 全量包</p>
 </section>
 
 <script src="data.js"></script>
