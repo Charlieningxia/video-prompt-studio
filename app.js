@@ -17,7 +17,7 @@
   // Paid-pack numbers shown in the pricing section. These MUST equal
   // pack/dist/manifest.json (computed from the pack data at build time);
   // tests/run-tests.js cross-checks them — never hand-tweak one side only.
-  var PACK_INFO = { libraryEntries: 120, xianxiaEntries: 20, xianxiaShots: 60, ecommerceEntries: 20, socialEntries: 20, filmEntries: 20, foodEntries: 10, petsEntries: 10, travelEntries: 10, totalEntries: 230, totalPromptTexts: 270, starterPrice: 19, fullPrice: 39 };
+  var PACK_INFO = { libraryEntries: 120, xianxiaEntries: 20, xianxiaShots: 60, ecommerceEntries: 20, socialEntries: 20, filmEntries: 20, foodEntries: 10, petsEntries: 10, travelEntries: 10, sportsEntries: 10, totalEntries: 240, totalPromptTexts: 280, starterPrice: 19, fullPrice: 39 };
 
   var UI_STRINGS = {
     zh: {
@@ -60,10 +60,11 @@
       fullLiFood: '美食与饮品特写包：<b id="pi-food">10</b> 条（蒸汽 / 浇注 / 切开 / 滋滋作响 / 拉丝 / 组装特写，9:16 与 16:9 逐条标注，2026-11-02 周更加入）',
       fullLiPets: '宠物日常包：<b id="pi-pets">10</b> 条（晨光 / 玩耍 / 洗护 / 好奇 / 陪伴日常，9:16 与 16:9 逐条标注，2026-11-02 周更加入）',
       fullLiTravel: '旅行风光包：<b id="pi-travel">10</b> 条（山岳 / 海岸 / 沙漠 / 城市 / 乡野与远北，9:16 与 16:9 逐条标注，2026-11-09 周更加入）',
+      fullLiSports: '运动健身包：<b id="pi-sports">10</b> 条（晨跑 / 球类 / 水上 / 冰雪 / 力量与柔韧，9:16 与 16:9 逐条标注，2026-11-16 周更加入）',
       fullLiKit: '角色一致性套件：角色设定表模板 + 各平台参考图工作流',
       pricingNote1: '购买后由 Gumroad 邮件发货 · 支持信用卡/PayPal · 文件为 JSON/CSV，可直接导入使用',
-      pricingNote2: '付费内容两个计数口径：共 <b id="pi-entries">230</b> 个条目；按单条提示词文本计共 <b id="pi-texts">270</b> 条（仙侠包按 60 条镜头计）。两个数字的定义见包内 manifest.json，均由数据自动统计。商品已在 Gumroad 上架（卖家 Charlie xiao），购买后由 Gumroad 邮件发货。',
-      pricingNote3: '<a href="changelog.html">更新日志</a> · 最近更新：2026-11-09 旅行风光包（10 条）加入 Full 全量包',
+      pricingNote2: '付费内容两个计数口径：共 <b id="pi-entries">240</b> 个条目；按单条提示词文本计共 <b id="pi-texts">280</b> 条（仙侠包按 60 条镜头计）。两个数字的定义见包内 manifest.json，均由数据自动统计。商品已在 Gumroad 上架（卖家 Charlie xiao），购买后由 Gumroad 邮件发货。',
+      pricingNote3: '<a href="changelog.html">更新日志</a> · 最近更新：2026-11-16 运动健身包（10 条）加入 Full 全量包',
       charsSuffix: ' 字符', wordsSuffix: ' 词',
       noSaved: '暂无保存', loadBtn: '载入', copySmall: '复制', deleteBtn: '删除',
       vaultCopy: '复制', vaultLoad: '载入编辑器', copyShot: '复制这一镜', copied: '已复制 ✓'
@@ -108,10 +109,11 @@
       fullLiFood: 'Food & beverage close-ups pack: <b id="pi-food">10</b> entries (steam / pour / cut / sizzle / pull / assemble, 9:16 and 16:9 noted per entry, added 2026-11-02)',
       fullLiPets: 'Pets daily pack: <b id="pi-pets">10</b> entries (morning / play / grooming / curiosity / companionship, 9:16 and 16:9 noted per entry, added 2026-11-02)',
       fullLiTravel: 'Travel & landscapes pack: <b id="pi-travel">10</b> entries (mountains / coast / desert / city / countryside & far north, 9:16 and 16:9 noted per entry, added 2026-11-09)',
+      fullLiSports: 'Sports & fitness pack: <b id="pi-sports">10</b> entries (running / ball sports / water / winter / strength & flexibility, 9:16 and 16:9 noted per entry, added 2026-11-16)',
       fullLiKit: 'Character-consistency kit: character sheet template + per-platform reference-image workflows',
       pricingNote1: 'Delivered by Gumroad email after purchase · Cards/PayPal accepted · JSON/CSV files, ready to import',
-      pricingNote2: 'Two ways to count the paid content: <b id="pi-entries">230</b> entries in total; <b id="pi-texts">270</b> individual prompt texts (the xianxia pack counts as 60 shot prompts). Both numbers are computed from the data — see manifest.json inside the pack. Listed on Gumroad (seller: Charlie xiao), delivered by email.',
-      pricingNote3: '<a href="changelog.html">Changelog</a> · Last update: 2026-11-09 — travel & landscapes pack (10 entries) added to Full',
+      pricingNote2: 'Two ways to count the paid content: <b id="pi-entries">240</b> entries in total; <b id="pi-texts">280</b> individual prompt texts (the xianxia pack counts as 60 shot prompts). Both numbers are computed from the data — see manifest.json inside the pack. Listed on Gumroad (seller: Charlie xiao), delivered by email.',
+      pricingNote3: '<a href="changelog.html">Changelog</a> · Last update: 2026-11-16 — sports & fitness pack (10 entries) added to Full',
       charsSuffix: ' chars', wordsSuffix: ' words',
       noSaved: 'Nothing saved yet', loadBtn: 'Load', copySmall: 'Copy', deleteBtn: 'Delete',
       vaultCopy: 'Copy', vaultLoad: 'Load into editor', copyShot: 'Copy this shot', copied: 'Copied ✓'
