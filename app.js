@@ -67,7 +67,7 @@
       fullLiKit: '角色一致性套件：角色设定表模板 + 各平台参考图工作流',
       pricingNote1: '购买后由 Gumroad 邮件发货 · 支持信用卡/PayPal · 文件为 JSON/CSV，可直接导入使用',
       pricingNote2: '付费内容两个计数口径：共 <b id="pi-entries">466</b> 个条目；按单条提示词文本计共 <b id="pi-texts">1154</b> 条（仙侠包按 60 条镜头计；人物/环境资产包每卡按 4 条文本计：中英锁定句 + 中英定妆/全景提示词）。两个数字的定义见包内 manifest.json，均由数据自动统计。商品已在 Gumroad 上架（卖家 Charlie xiao），购买后由 Gumroad 邮件发货。',
-      pricingNote3: '<a href="changelog.html">更新日志</a> · 最近更新：2026-11-24 人物资产包（108 张卡）加入 Full 全量包',
+      pricingNote3: '<a href="changelog.html">更新日志</a> · 最近更新：2026-11-24 环境资产包（108 张卡）加入 Full 全量包',
       charsSuffix: ' 字符', wordsSuffix: ' 词',
       noSaved: '暂无保存', loadBtn: '载入', copySmall: '复制', deleteBtn: '删除',
       vaultCopy: '复制', vaultLoad: '载入编辑器', copyShot: '复制这一镜', copied: '已复制 ✓'
@@ -119,7 +119,7 @@
       fullLiKit: 'Character-consistency kit: character sheet template + per-platform reference-image workflows',
       pricingNote1: 'Delivered by Gumroad email after purchase · Cards/PayPal accepted · JSON/CSV files, ready to import',
       pricingNote2: 'Two ways to count the paid content: <b id="pi-entries">466</b> entries in total; <b id="pi-texts">1154</b> individual prompt texts (the xianxia pack counts as 60 shot prompts; each character or environment asset card counts as 4 texts: bilingual lock sentence + bilingual reference-image prompt). Both numbers are computed from the data — see manifest.json inside the pack. Listed on Gumroad (seller: Charlie xiao), delivered by email.',
-      pricingNote3: '<a href="changelog.html">Changelog</a> · Last update: 2026-11-24 — character asset pack (108 cards) added to Full',
+      pricingNote3: '<a href="changelog.html">Changelog</a> · Last update: 2026-11-24 — environment asset pack (108 cards) added to Full',
       charsSuffix: ' chars', wordsSuffix: ' words',
       noSaved: 'Nothing saved yet', loadBtn: 'Load', copySmall: 'Copy', deleteBtn: 'Delete',
       vaultCopy: 'Copy', vaultLoad: 'Load into editor', copyShot: 'Copy this shot', copied: 'Copied ✓'
