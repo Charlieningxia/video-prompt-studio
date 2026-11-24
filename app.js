@@ -17,7 +17,7 @@
   // Paid-pack numbers shown in the pricing section. These MUST equal
   // pack/dist/manifest.json (computed from the pack data at build time);
   // tests/run-tests.js cross-checks them — never hand-tweak one side only.
-  var PACK_INFO = { libraryEntries: 120, xianxiaEntries: 20, xianxiaShots: 60, ecommerceEntries: 20, socialEntries: 20, filmEntries: 20, foodEntries: 10, petsEntries: 10, travelEntries: 10, sportsEntries: 10, musicEntries: 10, charactersEntries: 108, environmentsEntries: 108, totalEntries: 466, totalPromptTexts: 1154, starterPrice: 19, fullPrice: 39 };
+  var PACK_INFO = { libraryEntries: 120, xianxiaEntries: 20, xianxiaShots: 60, ecommerceEntries: 20, socialEntries: 20, filmEntries: 20, foodEntries: 10, petsEntries: 10, travelEntries: 10, sportsEntries: 10, musicEntries: 10, charactersEntries: 450, environmentsEntries: 450, totalEntries: 1150, totalPromptTexts: 3890, starterPrice: 19, fullPrice: 39 };
 
   var UI_STRINGS = {
     zh: {
@@ -62,12 +62,12 @@
       fullLiTravel: '旅行风光包：<b id="pi-travel">10</b> 条（山岳 / 海岸 / 沙漠 / 城市 / 乡野与远北，9:16 与 16:9 逐条标注，2026-11-09 周更加入）',
       fullLiSports: '运动健身包：<b id="pi-sports">10</b> 条（晨跑 / 球类 / 水上 / 冰雪 / 力量与柔韧，9:16 与 16:9 逐条标注，2026-11-16 周更加入）',
       fullLiMusic: '音乐与表演包：<b id="pi-music">10</b> 条（独奏 / 乐队舞台 / 人声 / 电子夜场 / 传统与童声，9:16 与 16:9 逐条标注，2026-11-23 周更加入）',
-      fullLiChars: '人物资产包：<b id="pi-chars">108</b> 张原创人物/神兽资产卡（仙侠玄幻 / 古风宫廷 / 古代乡村 / 现代都市 / 现代乡村 / 国漫3D校园 / 年代怀旧8090 / 科幻机甲 / 玄幻神兽，每类 12 张；每卡含中英双语锁定句 + 定妆提示词，2026-11-24 加入）',
-      fullLiEnvs: '环境资产包：<b id="pi-envs">108</b> 张原创场景资产卡，与人物包同为九大类、每类 12 张（仙侠玄幻场景 / 古风宫廷场景 / 古代乡村场景 / 现代都市场景 / 现代乡村场景 / 国漫3D校园场景 / 年代怀旧场景 / 科幻机甲场景 / 玄幻秘境；每卡含中英双语场景锁定句 + 无人空镜全景提示词，2026-11-24 加入）',
+      fullLiChars: '人物资产包：<b id="pi-chars">450</b> 张原创人物/神兽资产卡（仙侠玄幻 / 古风宫廷 / 古代乡村 / 现代都市 / 现代乡村 / 国漫3D校园 / 年代怀旧8090 / 科幻机甲 / 玄幻神兽，每类 50 张；每卡含中英双语锁定句 + 定妆提示词，2026-11-24 扩充）',
+      fullLiEnvs: '环境资产包：<b id="pi-envs">450</b> 张原创场景资产卡，与人物包同为九大类、每类 50 张（仙侠玄幻场景 / 古风宫廷场景 / 古代乡村场景 / 现代都市场景 / 现代乡村场景 / 国漫3D校园场景 / 年代怀旧场景 / 科幻机甲场景 / 玄幻秘境；每卡含中英双语场景锁定句 + 无人空镜全景提示词，2026-11-24 扩充）',
       fullLiKit: '角色一致性套件：角色设定表模板 + 各平台参考图工作流',
       pricingNote1: '购买后由 Gumroad 邮件发货 · 支持信用卡/PayPal · 文件为 JSON/CSV，可直接导入使用',
-      pricingNote2: '付费内容两个计数口径：共 <b id="pi-entries">466</b> 个条目；按单条提示词文本计共 <b id="pi-texts">1154</b> 条（仙侠包按 60 条镜头计；人物/环境资产包每卡按 4 条文本计：中英锁定句 + 中英定妆/全景提示词）。两个数字的定义见包内 manifest.json，均由数据自动统计。商品已在 Gumroad 上架（卖家 Charlie xiao），购买后由 Gumroad 邮件发货。',
-      pricingNote3: '<a href="changelog.html">更新日志</a> · 最近更新：2026-11-24 环境资产包（108 张卡）加入 Full 全量包',
+      pricingNote2: '付费内容两个计数口径：共 <b id="pi-entries">1150</b> 个条目；按单条提示词文本计共 <b id="pi-texts">3890</b> 条（仙侠包按 60 条镜头计；人物/环境资产包每卡按 4 条文本计：中英锁定句 + 中英定妆/全景提示词）。两个数字的定义见包内 manifest.json，均由数据自动统计。商品已在 Gumroad 上架（卖家 Charlie xiao），购买后由 Gumroad 邮件发货。',
+      pricingNote3: '<a href="changelog.html">更新日志</a> · 最近更新：2026-11-24 资产包大扩充：人物与环境各 450 张（每类 50 张）',
       charsSuffix: ' 字符', wordsSuffix: ' 词',
       noSaved: '暂无保存', loadBtn: '载入', copySmall: '复制', deleteBtn: '删除',
       vaultCopy: '复制', vaultLoad: '载入编辑器', copyShot: '复制这一镜', copied: '已复制 ✓'
@@ -114,12 +114,12 @@
       fullLiTravel: 'Travel & landscapes pack: <b id="pi-travel">10</b> entries (mountains / coast / desert / city / countryside & far north, 9:16 and 16:9 noted per entry, added 2026-11-09)',
       fullLiSports: 'Sports & fitness pack: <b id="pi-sports">10</b> entries (running / ball sports / water / winter / strength & flexibility, 9:16 and 16:9 noted per entry, added 2026-11-16)',
       fullLiMusic: 'Music & performance pack: <b id="pi-music">10</b> entries (solo instruments / bands & stage / vocals / electronic & nightlife / tradition & young voices, 9:16 and 16:9 noted per entry, added 2026-11-23)',
-      fullLiChars: 'Character asset pack: <b id="pi-chars">108</b> original character & creature asset cards (xianxia fantasy / ancient palace / ancient rural / modern city / modern rural / 3D donghua campus / 1980s-90s nostalgia / sci-fi & mecha / mythical beasts, 12 per category; each card carries a bilingual character-lock sentence + reference-image prompt, added 2026-11-24)',
-      fullLiEnvs: 'Environment asset pack: <b id="pi-envs">108</b> original environment asset cards in the same nine categories as the character pack, 12 per category (xianxia fantasy scenes / ancient palace scenes / ancient rural scenes / modern city scenes / modern rural scenes / 3D donghua campus scenes / 1980s-90s nostalgia scenes / sci-fi & mecha scenes / mythic beast realms; each card carries a bilingual scene-lock sentence + an empty-plate wide-shot prompt with no people, added 2026-11-24)',
+      fullLiChars: 'Character asset pack: <b id="pi-chars">450</b> original character & creature asset cards (xianxia fantasy / ancient palace / ancient rural / modern city / modern rural / 3D donghua campus / 1980s-90s nostalgia / sci-fi & mecha / mythical beasts, 50 per category; each card carries a bilingual character-lock sentence + reference-image prompt, expanded 2026-11-24)',
+      fullLiEnvs: 'Environment asset pack: <b id="pi-envs">450</b> original environment asset cards in the same nine categories as the character pack, 50 per category (xianxia fantasy scenes / ancient palace scenes / ancient rural scenes / modern city scenes / modern rural scenes / 3D donghua campus scenes / 1980s-90s nostalgia scenes / sci-fi & mecha scenes / mythic beast realms; each card carries a bilingual scene-lock sentence + an empty-plate wide-shot prompt with no people, expanded 2026-11-24)',
       fullLiKit: 'Character-consistency kit: character sheet template + per-platform reference-image workflows',
       pricingNote1: 'Delivered by Gumroad email after purchase · Cards/PayPal accepted · JSON/CSV files, ready to import',
-      pricingNote2: 'Two ways to count the paid content: <b id="pi-entries">466</b> entries in total; <b id="pi-texts">1154</b> individual prompt texts (the xianxia pack counts as 60 shot prompts; each character or environment asset card counts as 4 texts: bilingual lock sentence + bilingual reference-image prompt). Both numbers are computed from the data — see manifest.json inside the pack. Listed on Gumroad (seller: Charlie xiao), delivered by email.',
-      pricingNote3: '<a href="changelog.html">Changelog</a> · Last update: 2026-11-24 — environment asset pack (108 cards) added to Full',
+      pricingNote2: 'Two ways to count the paid content: <b id="pi-entries">1150</b> entries in total; <b id="pi-texts">3890</b> individual prompt texts (the xianxia pack counts as 60 shot prompts; each character or environment asset card counts as 4 texts: bilingual lock sentence + bilingual reference-image prompt). Both numbers are computed from the data — see manifest.json inside the pack. Listed on Gumroad (seller: Charlie xiao), delivered by email.',
+      pricingNote3: '<a href="changelog.html">Changelog</a> · Last update: 2026-11-24 — asset packs expanded: 450 character + 450 environment cards (50 per category)',
       charsSuffix: ' chars', wordsSuffix: ' words',
       noSaved: 'Nothing saved yet', loadBtn: 'Load', copySmall: 'Copy', deleteBtn: 'Delete',
       vaultCopy: 'Copy', vaultLoad: 'Load into editor', copyShot: 'Copy this shot', copied: 'Copied ✓'
